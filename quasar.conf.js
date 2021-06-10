@@ -192,7 +192,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'find_chain'
+        appId: '3288-littleGame'
       },
 
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration

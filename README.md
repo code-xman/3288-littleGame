@@ -1,4 +1,4 @@
-# Quasar App (find_chain)
+# Quasar App (3288-littleGame)
 
 A Quasar Framework app
 

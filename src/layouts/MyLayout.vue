@@ -64,9 +64,9 @@ export default {
         path: '/home'
       },
       {
-        name: 'findChain',
-        title: '查询',
-        path: 'findChain'
+        name: 'earthDefense',
+        title: 'earthDefense',
+        path: 'earthDefense'
       }
     ]
     function tweak (offset, height) {

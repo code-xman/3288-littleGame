@@ -58,7 +58,7 @@ export default {
       {
         label: 'Earth Defense',
         type: 'earthDefense',
-        path: 'findChain'
+        path: 'earthDefense'
       }
     ]
     const gameClick = type => {

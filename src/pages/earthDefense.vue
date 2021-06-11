@@ -1,4 +1,4 @@
-<!-- Created by xj on 2021-05-30. findChain -->
+<!-- Created by xj on 2021-05-30. earthDefense -->
 <template>
   <div class="fit q-pa-md">
     <q-card class="fit column">
@@ -54,7 +54,17 @@
           binary-state-sort
           :data="tableData"
           :columns="tableColumns"
-        />
+        >
+          <template v-slot:body-cell-result="props">
+            <q-td :props="props">
+              <div>
+                <q-badge color="teal" :label="props.value.green" />
+                /
+                <q-badge color="orange" :label="props.value.orange" />
+              </div>
+            </q-td>
+          </template>
+        </q-table>
       </q-card-section>
       <q-page-sticky
         ref="fabRef"
@@ -113,7 +123,7 @@ import { reactive, ref, watch } from '@vue/composition-api'
 import { earthDefense } from 'src/textData'
 import { notify } from 'src/utils/index'
 export default {
-  name: 'findChain',
+  name: 'earthDefense',
   setup () {
     // 字符长度
     const strLength = 5
@@ -205,7 +215,7 @@ export default {
         case 'query': {
           if (btnTimes.value.query < 1) {
             notify({
-              type: 'negative',
+              type: 'warning',
               message: '所剩蓝晶能源不足'
             })
             break
@@ -214,7 +224,10 @@ export default {
           tableData.value.push({
             inputVal: inputVal.value,
             accuracyResult: '',
-            result: `${resObj.value.green}/${resObj.value.orange}`
+            result: {
+              green: resObj.value.green,
+              orange: resObj.value.orange
+            }
           })
           inputVal.value = ''
           btnTimes.value.query -= 1
@@ -224,7 +237,7 @@ export default {
         case 'accuracyQuery': {
           if (btnTimes.value.query < 1) {
             notify({
-              type: 'negative',
+              type: 'warning',
               message: '所剩蓝晶能源不足'
             })
             break
@@ -239,7 +252,10 @@ export default {
           tableData.value.push({
             inputVal: inputVal.value,
             accuracyResult: resObj.value.accuracyResult,
-            result: `${resObj.value.green}/${resObj.value.orange}`
+            result: {
+              green: resObj.value.green,
+              orange: resObj.value.orange
+            }
           })
           inputVal.value = ''
           btnTimes.value.accuracyQuery -= 1
@@ -268,14 +284,13 @@ export default {
       }
       if (score === 10) {
         endObj.type = 'success'
-        endObj.num = 2
       } else if (score >= 6) {
         endObj.type = 'mid'
-        endObj.num = 2
       } else {
         endObj.type = 'fail'
-        endObj.num = 3
       }
+
+      endObj.num = earthDefense.endingName[endObj.type].length
       dialogObj.endingName =
         earthDefense.endingName[endObj.type][Math.floor(fateNum * endObj.num)]
       dialogObj.ending =

@@ -13,7 +13,8 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: 'home', component: () => import('pages/Index.vue') },
-      { path: 'earthDefense', component: () => import('src/pages/earthDefense.vue') }
+      { path: 'earthDefense', component: () => import('src/pages/earthDefense.vue') },
+      { path: 'sparks', component: () => import('src/pages/sparks.vue') }
     ]
   },
   // Always leave this as last one,

@@ -4,6 +4,7 @@
     <q-card class="fit column">
       <q-card-section class="q-pa-sm">
         <q-btn
+          class="q-mx-sm"
           v-for="gameItem in gameList"
           :key="gameItem.type"
           :label="gameItem.label"
@@ -44,36 +45,39 @@
 
 <script>
 import { reactive } from '@vue/composition-api'
-import { earthDefense } from 'src/textData'
+import { backgroundData } from 'src/textData'
 export default {
   name: 'PageIndex',
   setup (props, { root }) {
+    // 背景/规则弹框信息
     const dialogObj = reactive({
       dialogShow: false,
       backgroundNotes: '',
       path: ''
     })
 
+    // 列表
     const gameList = [
       {
         label: 'Earth Defense',
         type: 'earthDefense',
         path: 'earthDefense'
+      },
+      {
+        label: '星火',
+        type: 'sparks',
+        path: 'sparks'
       }
     ]
+
+    // 背景/规则弹框赋值
     const gameClick = type => {
       dialogObj.dialogShow = true
-      switch (type) {
-        case 'earthDefense':
-          dialogObj.backgroundNotes = earthDefense.backgroundNotes
-          dialogObj.path = gameList.find(item => item.type === type).path
-          break
-
-        default:
-          break
-      }
+      dialogObj.backgroundNotes = backgroundData[type]
+      dialogObj.path = gameList.find(item => item.type === type).path
     }
 
+    // 跳转页面
     const toGame = () => {
       root.$router.push(dialogObj.path)
     }

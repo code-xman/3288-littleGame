@@ -67,6 +67,11 @@ export default {
         name: 'earthDefense',
         title: 'earthDefense',
         path: 'earthDefense'
+      },
+      {
+        name: 'sparks',
+        title: '星火',
+        path: 'sparks'
       }
     ]
     function tweak (offset, height) {

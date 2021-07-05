@@ -56,4 +56,8 @@ const earthDefense = {
   }
 }
 
-export { earthDefense }
+const backgroundData = {
+  earthDefense: earthDefense.backgroundNotes
+}
+
+export { backgroundData, earthDefense }

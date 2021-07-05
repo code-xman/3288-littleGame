@@ -3,16 +3,18 @@
   <div class="fit q-pa-md">
     <q-card class="fit column">
       <q-card-section class="q-pa-sm">
-        <q-btn
-          v-for="btn in btns"
-          :key="btn.type"
-          :label="btn.label"
-          :color="btn.color"
-          :text-color="btn.textColor || 'white'"
-          :disable="btnTimes[btn.type] < 1"
-          class="btn"
-          @click="btnClick(btn.type)"
-        />
+        <q-btn-group push glossy class="q-my-sm">
+          <q-btn
+            v-for="btn in btns"
+            :key="btn.type"
+            :label="btn.label"
+            :color="btn.color"
+            :text-color="btn.textColor || 'white'"
+            :disable="btnTimes[btn.type] < 1"
+            class="btn"
+            @click="btnClick(btn.type)"
+          />
+        </q-btn-group>
         <q-circular-progress
           show-value
           font-size="12px"
@@ -417,8 +419,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.btn {
-  margin: 7px 0;
-}
-</style>
+<style lang="scss" scoped></style>

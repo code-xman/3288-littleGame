@@ -56,8 +56,14 @@ const earthDefense = {
   }
 }
 
+const sparks = {
+  backgroundNotes: `星火计划目前还是机密，
+                    等待组织下达相关命令后再行动。`
+}
+
 const backgroundData = {
-  earthDefense: earthDefense.backgroundNotes
+  earthDefense: earthDefense.backgroundNotes,
+  sparks: sparks.backgroundNotes
 }
 
 export { backgroundData, earthDefense }

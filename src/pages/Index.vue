@@ -2,6 +2,11 @@
   <q-page class="fit q-pa-md">
     <!-- <img alt="Quasar logo" src="~assets/quasar-logo-full.svg" /> -->
     <q-card class="fit column">
+      <q-card-section class="">
+        <q-banner inline-actions class="text-white bg-secondary text-center">
+          请选择想执行的任务
+        </q-banner>
+      </q-card-section>
       <q-card-section class="q-pa-sm">
         <q-btn
           class="q-mx-sm"
@@ -31,7 +36,7 @@
             <q-btn flat label="取消" v-close-popup />
             <q-btn
               flat
-              label="开始"
+              label="好的"
               color="primary"
               v-close-popup
               @click="toGame"
@@ -59,14 +64,14 @@ export default {
     // 列表
     const gameList = [
       {
-        label: 'Earth Defense',
+        label: '蓝星守卫',
         type: 'earthDefense',
         path: 'earthDefense'
       },
       {
-        label: '星火',
+        label: '星火计划',
         type: 'sparks',
-        path: 'sparks'
+        path: ''
       }
     ]
 
@@ -79,6 +84,9 @@ export default {
 
     // 跳转页面
     const toGame = () => {
+      if (dialogObj.path === '') {
+        return
+      }
       root.$router.push(dialogObj.path)
     }
 

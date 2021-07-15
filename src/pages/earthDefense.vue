@@ -132,10 +132,15 @@ export default {
     // 转化数
     const changeNum = 10
     // answer
-    const answer = Math.random()
-      .toString(changeNum)
-      .slice(-strLength)
-    console.log('answer :>> ', answer)
+    const answer = ref('')
+    generateAnswer()
+    // 生成answer
+    function generateAnswer () {
+      answer.value = Math.random()
+        .toString(changeNum)
+        .slice(-strLength)
+      console.log('answer :>> ', answer.value)
+    }
 
     // 结果
     const resObj = ref({
@@ -197,7 +202,7 @@ export default {
         type: 'accuracyQuery'
       },
       {
-        label: '查看结果',
+        label: '结局',
         color: 'teal',
         type: 'end'
       }
@@ -301,7 +306,7 @@ export default {
     }
 
     watch(tableData, () => {
-      if (tableData.value.length > 5) {
+      if (tableData.value.length >= 1) {
         btnTimes.value.end = 1
       } else {
         btnTimes.value.end = 0
@@ -311,7 +316,7 @@ export default {
     // 处理数据
     function handleData (value) {
       clearCache()
-      const arr = answer.split('')
+      const arr = answer.value.split('')
       arr.forEach((item, index) => {
         if (value[index] === item) {
           resObj.value.green += 1
@@ -394,6 +399,7 @@ export default {
         query: 10,
         end: 0
       }
+      generateAnswer()
     }
 
     // dialogObj
